@@ -21,7 +21,14 @@ class PlatformBlock extends SpriteComponent with HasGameRef<Flutterio> {
       (gridPosition.x * size.x) + xOffset,
       game.size.y - (gridPosition.y * size.y),
     );
-    add(RectangleHitbox()..collisionType = CollisionType.passive);
+    add( PolygonHitbox(
+      [
+        Vector2(0, 0),
+        Vector2(64, 0),
+        Vector2(64, 64),
+        Vector2(0, 64),
+      ],
+    )..collisionType = CollisionType.passive);
   }
 
   @override

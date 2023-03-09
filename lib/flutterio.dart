@@ -28,6 +28,7 @@ class Flutterio extends FlameGame with HasCollisionDetection, HasKeyboardHandler
       'heart.png',
       'star.png',
       'mushroom.png',
+      'zelda.png',
     ]);
     initializeGame();
   }
@@ -66,7 +67,7 @@ class Flutterio extends FlameGame with HasCollisionDetection, HasKeyboardHandler
     for (var i = 0; i <= segmentsToLoad; i++) {
       loadGameSegments(i, (640 * i).toDouble());
     }
-    _rio = FlutterioPlayer(position: Vector2(128, canvasSize.y - 128));
+    _rio = FlutterioPlayer(position: Vector2(60, canvasSize.y - 120));
     add(_rio);
   }
 }

@@ -11,7 +11,9 @@ import 'package:flutterio/flutterio.dart';
 class FlutterioPlayer extends SpriteAnimationComponent
     with CollisionCallbacks, KeyboardHandler, HasGameRef<Flutterio> {
   FlutterioPlayer({required super.position})
-      : super(size: Vector2.all(64), anchor: Anchor.center);
+      : super(size: Vector2.all(64), anchor: Anchor.center) {
+    debugMode = true;
+  }
 
   final Vector2 velocity = Vector2.zero();
   final double moveSpeed = 200;
@@ -28,15 +30,23 @@ class FlutterioPlayer extends SpriteAnimationComponent
   @override
   Future<void> onLoad() async {
     animation = SpriteAnimation.fromFrameData(
-      game.images.fromCache('ember.png'),
+      game.images.fromCache('zelda.png'),
       SpriteAnimationData.sequenced(
-        amount: 4,
-        textureSize: Vector2.all(16),
+        amount: 10,
+        textureSize: Vector2.all(120),
         stepTime: 0.12,
-
       ),
     );
-    add(CircleHitbox());
+    add(
+      PolygonHitbox(
+        [
+          Vector2(0, 0),
+          Vector2(64, 0),
+          Vector2(64, 64),
+          Vector2(0, 64),
+        ],
+      ),
+    );
   }
 
   @override
@@ -92,7 +102,7 @@ class FlutterioPlayer extends SpriteAnimationComponent
     velocity.y += gravity;
     // Prevent ember from jumping to crazy fast as well as descending too fast and
     // crashing through the ground or a platform.
-    velocity.y = velocity.y.clamp(-jumpSpeed, terminalVelocity);
+    velocity.y = velocity.y.clamp(-jumpSpeed, 100);
     if (hasJumped) {
       if (isOnGround) {
         velocity.y = -jumpSpeed;
