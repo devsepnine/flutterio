@@ -2,7 +2,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flutter/services.dart';
-import 'package:flutterio/actors/water_enemy.dart';
+import 'package:flutterio/actors/mushroom_enemy.dart';
 import 'package:flutterio/objects/star.dart';
 import 'package:flutterio/objects/ground_block.dart';
 import 'package:flutterio/objects/platform_block.dart';
@@ -33,6 +33,7 @@ class FlutterioPlayer extends SpriteAnimationComponent
         amount: 4,
         textureSize: Vector2.all(16),
         stepTime: 0.12,
+
       ),
     );
     add(CircleHitbox());
@@ -79,7 +80,7 @@ class FlutterioPlayer extends SpriteAnimationComponent
       other.removeFromParent();
     }
 
-    if (other is WaterEnemy) {
+    if (other is MushroomEnemy) {
       hit();
     }
     super.onCollision(intersectionPoints, other);

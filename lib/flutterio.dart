@@ -3,7 +3,7 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
 import 'actors/rio.dart';
-import 'actors/water_enemy.dart';
+import 'actors/mushroom_enemy.dart';
 import 'managers/segment_manager.dart';
 import 'objects/ground_block.dart';
 import 'objects/platform_block.dart';
@@ -27,7 +27,7 @@ class Flutterio extends FlameGame with HasCollisionDetection, HasKeyboardHandler
       'heart_half.png',
       'heart.png',
       'star.png',
-      'water_enemy.png',
+      'mushroom.png',
     ]);
     initializeGame();
   }
@@ -51,8 +51,8 @@ class Flutterio extends FlameGame with HasCollisionDetection, HasKeyboardHandler
         case Star:
           add(Star(gridPosition: block.gridPosition, xOffset: xPositionOffset));
           break;
-        case WaterEnemy:
-          add(WaterEnemy(
+        case MushroomEnemy:
+          add(MushroomEnemy(
               gridPosition: block.gridPosition, xOffset: xPositionOffset));
           break;
       }

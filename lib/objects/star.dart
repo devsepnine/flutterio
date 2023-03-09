@@ -35,13 +35,13 @@ class Star extends SpriteComponent with HasGameRef<Flutterio> {
             )
         )
     );
+  }
+  @override
+  void update(double dt) {
+    velocity.x = game.objectSpeed;
+    position += velocity * dt;
 
-    @override
-    void update(double dt) {
-      velocity.x = game.objectSpeed;
-      position += velocity * dt;
-      if (position.x < -size.x) removeFromParent();
-      super.update(dt);
-    }
+    if (position.x < -size.x) removeFromParent();
+    super.update(dt);
   }
 }

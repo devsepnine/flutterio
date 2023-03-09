@@ -4,14 +4,14 @@ import 'package:flame/effects.dart';
 
 import '../flutterio.dart';
 
-class WaterEnemy extends SpriteAnimationComponent
+class MushroomEnemy extends SpriteAnimationComponent
     with HasGameRef<Flutterio> {
   final Vector2 gridPosition;
   double xOffset;
 
   final Vector2 velocity = Vector2.zero();
 
-  WaterEnemy({
+  MushroomEnemy({
     required this.gridPosition,
     required this.xOffset,
   }) : super(size: Vector2.all(64), anchor: Anchor.bottomLeft);
@@ -19,11 +19,11 @@ class WaterEnemy extends SpriteAnimationComponent
   @override
   Future<void> onLoad() async {
     animation = SpriteAnimation.fromFrameData(
-      game.images.fromCache('water_enemy.png'),
+      game.images.fromCache('mushroom.png'),
       SpriteAnimationData.sequenced(
         amount: 2,
-        textureSize: Vector2.all(16),
-        stepTime: 0.70,
+        textureSize: Vector2.all(32),
+        stepTime: 0.30,
       ),
     );
     position = Vector2(
